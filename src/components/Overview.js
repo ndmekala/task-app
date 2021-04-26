@@ -3,29 +3,15 @@ import React, { Component } from 'react';
 class Overview extends Component {
     constructor(props) {
       super(props);
-
-      this.state = {
-        greeting: 'dingus',
-      }
-
-      this.overviewClicked = this.overviewClicked.bind(this)
     }
 
-    overviewClicked() {
-      this.setState(
-        {
-          greeting: 'yahoo!'
-        }
-      )
-    }
   
     render() {
       return (
         <div>
           <ul>
-            <li>{this.props.greeting}</li>
+            {this.props.tasks.map((task) => <li key={task}>{task}</li>)}
           </ul>
-          <button onClick={this.overviewClicked}>Overview btn</button>
         </div>
       );
     }

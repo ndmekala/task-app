@@ -7,33 +7,39 @@ class App extends Component {
     super(props);
 
     this.state = {
-      message: ['pickle'],
+      taskArray: [],
+      value: '',
     }
+
+
     this.buttonClicked = this.buttonClicked.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+  
   buttonClicked(event) {
     event.preventDefault();
     this.setState({
-      message: this.state.message.splice(0, 0, 'peanut')
+      taskArray: this.state.taskArray.concat(this.state.value)
     })
-    console.table((this.state.message))
 
   }
 
   render() {
     return (
       <div>
-        <Overview greeting={this.state.message} />
-        <form>
+        <Overview tasks={this.state.taskArray} />
+        <form onSubmit={this.buttonClicked}>
           <label>
             New Todo
           </label>
-          <input type="text"/>
-          <input type="submit" value="Submit" onClick={this.buttonClicked}/>
+          <input type="text" value={this.state.value} onChange={this.handleChange}/>
+          <input type="submit" value="Submit"/>
           
         </form>
-        <button onClick={this.buttonClicked}>click me</button>
       </div>
     );
   }
