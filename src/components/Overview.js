@@ -23,7 +23,7 @@ class Overview extends Component {
       return (
         <div>
           <ul>
-            <li>{this.state.greeting}</li>
+            <li>{this.props.greeting}</li>
           </ul>
           <button onClick={this.overviewClicked}>Overview btn</button>
         </div>
